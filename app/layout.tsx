@@ -1,3 +1,5 @@
+import Script from 'next/script'
+
 export const metadata = {
   title: 'Troy Shimkus — Portfolio & Resume',
   description:
@@ -9,15 +11,15 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
     <html lang="en">
       <head>
         <meta name="viewport" content="width=device-width, initial-scale=1" />
-        <script>{`
+        <Script id="tw-config" strategy="beforeInteractive">{`
           window.tailwind = window.tailwind || {};
           window.tailwind.config = { theme: { extend: { fontFamily: { sans: ['Inter','ui-sans-serif','system-ui','Segoe UI','Roboto','Helvetica','Arial','sans-serif'] } } } };
-        `}</script>
-        <script src="https://cdn.tailwindcss.com"></script>
+        `}</Script>
+        <Script src="https://cdn.tailwindcss.com" strategy="beforeInteractive" />
         <style>{` :root{ --primary:#27AAE1; --primary-hover:#199bd4; --on-primary:#ffffff; --accent:#FAAE5E; --accent-hover:#e39d54; --on-accent:#1f2937; --orb1:#CDEFFC; --orb2:#E6F9FF; --chip-bg:#EBF9FF; --chip-ring:#5CCBF0; --chip-text:#063247; --neutral-bg:#F7FAFC; --neutral-text:#334155; } `}</style>
-        <script>{`
+        <Script id="palette-hydrate" strategy="beforeInteractive">{`
           (function(){ try{ const raw = localStorage.getItem('palette'); if(!raw) return; const p = JSON.parse(raw); Object.entries(p).forEach(([k,v])=>document.documentElement.style.setProperty('--'+k,v)); }catch(e){} })();
-        `}</script>
+        `}</Script>
       </head>
       <body className="bg-[var(--neutral-bg)] text-[var(--neutral-text)] font-sans antialiased">
         <header className="sticky top-0 z-50 bg-white/80 backdrop-blur border-b border-slate-200">

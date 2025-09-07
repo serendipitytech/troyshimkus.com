@@ -1,5 +1,6 @@
 import Image from 'next/image'
 import { projects } from '../data/projects'
+import ProjectsCarousel from './components/ProjectsCarousel'
 
 export default function HomePage() {
   return (
@@ -83,58 +84,8 @@ export default function HomePage() {
           <a href="#contact" className="text-sm text-slate-600 hover:text-slate-800">Need something like this? Let’s chat →</a>
         </div>
         <div className="mt-8">
-          <div id="nx-proj" className="relative overflow-hidden">
-            <div className="flex transition-transform duration-500 ease-out" data-track>
-              {projects.map((p) => (
-                <div className="px-1" data-slide key={p.slug}>
-                  <article className="rounded-lg border border-slate-200 border-t-4 border-[var(--accent)] bg-white p-6 shadow-sm h-full">
-                    <h3 className="font-semibold">{p.title}</h3>
-                    <p className="mt-2 text-sm text-slate-700">{p.summary}</p>
-                    {p.tags?.length ? (
-                      <div className="mt-4 flex flex-wrap gap-2">
-                        {p.tags.map((t) => (
-                          <span key={t} className="text-xs bg-slate-100 text-slate-700 rounded-full px-2 py-1 ring-1 ring-inset ring-slate-200">
-                            {t}
-                          </span>
-                        ))}
-                      </div>
-                    ) : null}
-                    <div className="mt-4">
-                      <a href="/projects" className="text-sm text-slate-600 hover:text-slate-800">Read more →</a>
-                    </div>
-                  </article>
-                </div>
-              ))}
-            </div>
-            <div className="mt-4 flex justify-center gap-2" data-dots>
-              {projects.map((_, i) => (
-                <button key={i} className="h-2 w-2 rounded-full bg-slate-300" aria-label={`Go to slide ${i + 1}`} data-dot />
-              ))}
-            </div>
-          </div>
+          <ProjectsCarousel projects={projects} />
         </div>
-        <script dangerouslySetInnerHTML={{__html:`
-          (function(){
-            const root = document.getElementById('nx-proj'); if(!root) return;
-            const track = root.querySelector('[data-track]');
-            const slides = Array.from(root.querySelectorAll('[data-slide]'));
-            const dots = Array.from(root.querySelectorAll('[data-dot]'));
-            let idx=0, vis=1, pos=1; let start=0, cur=0, drag=false; let timer;
-            function visCount(){ const w=window.innerWidth; if (w>=1024) return 3; if (w>=640) return 2; return 1; }
-            function layout(){ vis=visCount(); pos=Math.max(1, slides.length - vis + 1); const cw=root.clientWidth/vis; slides.forEach(sl=>{ sl.style.minWidth=cw+'px'; sl.style.maxWidth=cw+'px'; }); if (idx>=pos) idx=0; dots.forEach((d,i)=>{ d.style.display = (i<pos)?'inline-block':'none'; }); update(); }
-            function update(){ const cw=root.clientWidth/vis; track.style.transform = 'translateX(' + (-idx*cw) + 'px)'; dots.forEach((d,i)=> d.style.background = i===idx ? 'var(--accent)' : '#cbd5e1'); }
-            function next(){ idx=(idx+1)%pos; update(); }
-            function play(){ timer = setInterval(next, 5000); }
-            function stop(){ clearInterval(timer); }
-            root.addEventListener('mouseenter', stop); root.addEventListener('mouseleave', play);
-            dots.forEach((d,i)=> d.addEventListener('click', ()=>{ if(i<pos){ idx=i; update(); }}));
-            track.addEventListener('touchstart', (e)=>{ if(!e.touches?.length) return; stop(); drag=true; start=e.touches[0].clientX; cur=start; }, {passive:true});
-            track.addEventListener('touchmove', (e)=>{ if(!drag||!e.touches?.length) return; cur=e.touches[0].clientX; }, {passive:true});
-            track.addEventListener('touchend', ()=>{ if(!drag) return; const delta=cur-start; const th=40; if(Math.abs(delta)>th){ if(delta<0) idx=Math.min(idx+1,pos-1); else idx=Math.max(idx-1,0); update(); } drag=false; play(); });
-            window.addEventListener('resize', layout);
-            layout(); play();
-          })();
-        `}} />
       </section>
 
       {/* Contact */}
