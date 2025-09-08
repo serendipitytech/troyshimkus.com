@@ -1,0 +1,28 @@
+# Node/Next.js (apps/next)
+/apps/next/node_modules/
+/apps/next/.next/
+/apps/next/out/
+/apps/next/.turbo/
+/apps/next/dist/
+
+# PHP vendor and env (apps/php)
+/apps/php/vendor/
+/apps/php/config/env.php
+
+# Env
+.env*
+
+# Prototypes / local scratch (ignored)
+prototypes/
+private/
+scratch/
+tmp/
+
+# Logs
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+pnpm-debug.log*
+
+# OS
+.DS_Store
