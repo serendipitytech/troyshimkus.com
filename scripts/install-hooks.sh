@@ -1,6 +1,13 @@
 #!/usr/bin/env bash
 set -euo pipefail
 
+has_subtree() {
+  if git --list-cmds=others -a 2>/dev/null | grep -qx subtree; then
+    return 0
+  fi
+  GIT_PAGER=cat git help -a 2>/dev/null | grep -q 'subtree'
+}
+
 repo_root=$(git rev-parse --show-toplevel 2>/dev/null || true)
 if [[ -z "${repo_root}" ]]; then
   echo "Not in a git repository." >&2
@@ -11,7 +18,7 @@ cd "$repo_root"
 hooks_dir=".git/hooks"
 mkdir -p "$hooks_dir"
 
-if ! git subtree --help >/dev/null 2>&1; then
+if ! has_subtree; then
   echo "Warning: git-subtree is not available. Install it to enable deploy branches." >&2
 fi
 
@@ -27,7 +34,14 @@ if [ "$branch" != "main" ]; then
   exit 0
 fi
 
-if ! git subtree --help >/dev/null 2>&1; then
+has_subtree() {
+  if git --list-cmds=others -a 2>/dev/null | grep -qx subtree; then
+    return 0
+  fi
+  GIT_PAGER=cat git help -a 2>/dev/null | grep -q 'subtree'
+}
+
+if ! has_subtree; then
   echo "[subtree] git-subtree not available; skipping deploy branches." >&2
   exit 0
 fi
@@ -65,7 +79,14 @@ if [ "$branch" != "main" ]; then
   exit 0
 fi
 
-if ! git subtree --help >/dev/null 2>&1; then
+has_subtree() {
+  if git --list-cmds=others -a 2>/dev/null | grep -qx subtree; then
+    return 0
+  fi
+  GIT_PAGER=cat git help -a 2>/dev/null | grep -q 'subtree'
+}
+
+if ! has_subtree; then
   exit 0
 fi
 
@@ -86,4 +107,3 @@ EOF
 
 chmod +x "$hooks_dir/pre-push" "$hooks_dir/post-push"
 echo "Hooks installed in $hooks_dir"
-
