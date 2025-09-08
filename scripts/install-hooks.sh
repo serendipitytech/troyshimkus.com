@@ -48,9 +48,9 @@ next_sha=$(git subtree split --prefix=apps/next -b "$next_branch")
 echo "[subtree] php-version @ $php_sha"
 echo "[subtree] nextjs-version @ $next_sha"
 
-# Push to the same remote, bypassing hooks to avoid recursion
-git push --no-verify "$remote" "$php_branch:$php_branch"
-git push --no-verify "$remote" "$next_branch:$next_branch"
+# Push to the same remote, bypassing hooks to avoid recursion; force-update deploy branches
+git push --force --no-verify "$remote" "$php_branch:$php_branch"
+git push --force --no-verify "$remote" "$next_branch:$next_branch"
 
 echo "[subtree] Deployment branches pushed to $remote"
 exit 0
@@ -83,9 +83,9 @@ next_branch="nextjs-version"
 php_sha=$(git subtree split --prefix=apps/php -b "$php_branch")
 next_sha=$(git subtree split --prefix=apps/next -b "$next_branch")
 
-# Push without triggering hooks to avoid recursion
-git push --no-verify "$remote" "$php_branch:$php_branch" || true
-git push --no-verify "$remote" "$next_branch:$next_branch" || true
+# Push without triggering hooks to avoid recursion; force-update
+git push --force --no-verify "$remote" "$php_branch:$php_branch" || true
+git push --force --no-verify "$remote" "$next_branch:$next_branch" || true
 
 exit 0
 EOF
