@@ -14,6 +14,13 @@ export const projects: Project[] = [
     tags: ['React/TS', 'Supabase (RLS)', 'APIs', 'Tailwind'],
   },
   {
+    slug: 'spring-voter',
+    title: 'Voter (Spring Boot)',
+    summary:
+      'Online voting system with multiple methods, anonymous voting, real-time results, and Bootstrap UI.',
+    tags: ['Java', 'Spring Boot', 'MySQL'],
+  },
+  {
     slug: 'district-analytics',
     title: 'District Analytics Dashboards',
     summary:
@@ -63,4 +70,3 @@ export const projects: Project[] = [
     tags: ['Automation', 'ESP', 'Data'],
   },
 ];
-
