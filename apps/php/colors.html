@@ -25,7 +25,10 @@
       <div class="mx-auto max-w-6xl px-4 py-4 flex items-center justify-between">
         <a href="/" class="text-sm text-slate-600 hover:text-slate-800">← Back to site</a>
         <h1 class="text-base font-semibold tracking-tight">Color Palettes</h1>
-        <div class="text-sm text-slate-400">Click “Use this palette” to apply</div>
+        <div class="flex items-center gap-3">
+          <button id="resetPalette" class="text-xs rounded border border-slate-300 bg-white px-3 py-1.5 hover:bg-slate-50">Reset to default</button>
+          <div class="text-sm text-slate-400">Click “Use this palette” to apply</div>
+        </div>
       </div>
     </header>
 
@@ -362,6 +365,26 @@
           'neutral-bg': '#F7FAFC', 'neutral-text': '#334155'
         }
       };
+      const toast = document.createElement('div');
+      toast.className = 'pointer-events-none fixed bottom-6 left-1/2 -translate-x-1/2 hidden rounded-md bg-slate-900 text-white px-4 py-2 text-sm shadow-lg';
+      toast.textContent = 'Applied to site ✓';
+      document.body.appendChild(toast);
+
+      function showToast() {
+        toast.classList.remove('hidden');
+        toast.classList.add('opacity-0');
+        requestAnimationFrame(()=>{
+          toast.classList.remove('opacity-0');
+        });
+        setTimeout(()=>{ toast.classList.add('hidden'); }, 1500);
+      }
+
+      document.getElementById('resetPalette')?.addEventListener('click', (e)=>{
+        e.preventDefault();
+        localStorage.removeItem('palette');
+        location.reload();
+      });
+
       document.querySelectorAll('[data-palette]').forEach(btn=>{
         btn.addEventListener('click',(e)=>{
           e.preventDefault();
@@ -372,7 +395,8 @@
           // Apply immediately so the mock reflects choice
           Object.entries(cfg).forEach(([k,v])=>document.documentElement.style.setProperty(`--${k}`, v));
           btn.textContent = 'Selected ✓';
-          setTimeout(()=>{ btn.textContent = 'Use this palette'; }, 1500);
+          setTimeout(()=>{ btn.textContent = 'Use this palette'; }, 1000);
+          showToast();
         });
       });
     </script>

@@ -44,3 +44,28 @@
 - HostGator deploys: `vendor/` is tracked to avoid server-side Composer. `composer.lock` ensures reproducible installs.
 - Push protection: address any secret-scan blocks by removing credentials from history before pushing.
 
+## Deployment Branch Automation (Subtrees)
+
+To keep deploy branches up to date automatically on every push to `main`, local Git hooks are configured to split and push subtrees:
+
+- `php-version` → contains only `apps/php`
+- `nextjs-version` → contains only `apps/next`
+
+How it works
+- A client-side `pre-push` hook runs when you push `main` and:
+  - Runs `git subtree split --prefix=apps/php -b php-version`
+  - Runs `git subtree split --prefix=apps/next -b nextjs-version`
+  - Pushes both branches to the same remote with `--no-verify` to avoid recursion
+- An informational `post-push` hook is also present; most Git setups don’t trigger `post-push`, so the `pre-push` hook is the effective one.
+
+Usage
+- Just `git push` while on `main`. The hooks update and push `php-version` and `nextjs-version` automatically.
+- To skip this behavior for a push, use `git push --no-verify`.
+
+Install hooks on a new clone
+- Run `scripts/install-hooks.sh` from the repo root to install the hooks into `.git/hooks/` and make them executable.
+
+Notes
+- Hooks live in `.git/hooks/` and are not committed; if you clone on a new machine, re-create them or copy from this repo’s documentation.
+- The hooks push to the same remote you’re pushing to (argument provided by Git).
+- Requires `git subtree` to be available in your Git installation.

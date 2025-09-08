@@ -38,15 +38,5 @@ if (!isset($pageDescription)) {
         --neutral-bg:#F7FAFC; --neutral-text:#334155;
       }
     </style>
-    <script>
-      // Apply stored palette
-      (function(){
-        try{
-          const raw = localStorage.getItem('palette');
-          if(!raw) return;
-          const p = JSON.parse(raw);
-          Object.entries(p).forEach(([k,v])=>document.documentElement.style.setProperty(`--${k}`, v));
-        }catch(e){}
-      })();
-    </script>
+    <script src="/public/js/palette.js"></script>
   </head>
