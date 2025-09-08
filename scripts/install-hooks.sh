@@ -1,12 +1,7 @@
 #!/usr/bin/env bash
 set -euo pipefail
 
-has_subtree() {
-  if git --list-cmds=others -a 2>/dev/null | grep -qx subtree; then
-    return 0
-  fi
-  GIT_PAGER=cat git help -a 2>/dev/null | grep -q 'subtree'
-}
+has_subtree() { git subtree -h >/dev/null 2>&1; }
 
 repo_root=$(git rev-parse --show-toplevel 2>/dev/null || true)
 if [[ -z "${repo_root}" ]]; then
@@ -34,12 +29,7 @@ if [ "$branch" != "main" ]; then
   exit 0
 fi
 
-has_subtree() {
-  if git --list-cmds=others -a 2>/dev/null | grep -qx subtree; then
-    return 0
-  fi
-  GIT_PAGER=cat git help -a 2>/dev/null | grep -q 'subtree'
-}
+has_subtree() { git subtree -h >/dev/null 2>&1; }
 
 if ! has_subtree; then
   echo "[subtree] git-subtree not available; skipping deploy branches." >&2
@@ -79,12 +69,7 @@ if [ "$branch" != "main" ]; then
   exit 0
 fi
 
-has_subtree() {
-  if git --list-cmds=others -a 2>/dev/null | grep -qx subtree; then
-    return 0
-  fi
-  GIT_PAGER=cat git help -a 2>/dev/null | grep -q 'subtree'
-}
+has_subtree() { git subtree -h >/dev/null 2>&1; }
 
 if ! has_subtree; then
   exit 0
