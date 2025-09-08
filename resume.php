@@ -23,7 +23,7 @@
         <h2 class="text-xl font-bold">Experience</h2>
         <span class="mt-2 block h-1 w-10 bg-[var(--primary)]"></span>
         <div class="mt-6 space-y-6">
-          <article class="rounded-lg border border-slate-200 border-t-4 border-[var(--primary)] bg-white p-6 shadow-sm transition hover:shadow-md hover:-translate-y-0.5">
+          <article class="rounded-lg border border-[var(--primary)] bg-white p-6 shadow-sm transition hover:shadow-md hover:-translate-y-0.5">
             <div class="flex items-center justify-between">
               <h3 class="font-semibold">Manager, Professional Services — PowerSchool</h3>
               <span class="text-sm text-slate-600">Jan 2022 – Present</span>
@@ -34,7 +34,7 @@
               <li>Aligned technical and non‑technical stakeholders to district outcomes and renewals.</li>
             </ul>
           </article>
-          <article class="rounded-lg border border-slate-200 border-t-4 border-[var(--accent)] bg-white p-6 shadow-sm transition hover:shadow-md hover:-translate-y-0.5">
+          <article class="rounded-lg border border-[var(--accent)] bg-white p-6 shadow-sm transition hover:shadow-md hover:-translate-y-0.5">
             <div class="flex items-center justify-between">
               <h3 class="font-semibold">Consultant (Independent) — Software Integration & Solutions</h3>
               <span class="text-sm text-slate-600">Jan 2008 – Present</span>
@@ -45,7 +45,7 @@
               <li>Implemented marketing automation pipelines (Mautic, RabbitMQ, MySQL).</li>
             </ul>
           </article>
-          <article class="rounded-lg border border-slate-200 border-t-4 border-[var(--primary)] bg-white p-6 shadow-sm transition hover:shadow-md hover:-translate-y-0.5">
+          <article class="rounded-lg border border-[var(--primary)] bg-white p-6 shadow-sm transition hover:shadow-md hover:-translate-y-0.5">
             <div class="flex items-center justify-between">
               <h3 class="font-semibold">City Commissioner — Deltona, FL</h3>
               <span class="text-sm text-slate-600">Jan 2024 – Nov 2024</span>
@@ -55,7 +55,7 @@
               <li>Launched public dashboards to improve transparency and civic trust.</li>
             </ul>
           </article>
-          <article class="rounded-lg border border-slate-200 border-t-4 border-[var(--accent)] bg-white p-6 shadow-sm transition hover:shadow-md hover:-translate-y-0.5">
+          <article class="rounded-lg border border-[var(--accent)] bg-white p-6 shadow-sm transition hover:shadow-md hover:-translate-y-0.5">
             <div class="flex items-center justify-between">
               <h3 class="font-semibold">President — Deltona Strong, LLC (Nonprofit)</h3>
               <span class="text-sm text-slate-600">Aug 2018 – Present</span>
@@ -65,7 +65,7 @@
               <li>Launched community garden and emergency hotline with local partners.</li>
             </ul>
           </article>
-          <article class="rounded-lg border border-slate-200 border-t-4 border-[var(--primary)] bg-white p-6 shadow-sm transition hover:shadow-md hover:-translate-y-0.5">
+          <article class="rounded-lg border border-[var(--primary)] bg-white p-6 shadow-sm transition hover:shadow-md hover:-translate-y-0.5">
             <div class="flex items-center justify-between">
               <h3 class="font-semibold">Implementation Manager — PowerSchool</h3>
               <span class="text-sm text-slate-600">Jan 2014 – Dec 2022</span>
@@ -75,7 +75,7 @@
               <li>Strengthened retention and trust through hands‑on issue resolution.</li>
             </ul>
           </article>
-          <article class="rounded-lg border border-slate-200 border-t-4 border-[var(--accent)] bg-white p-6 shadow-sm transition hover:shadow-md hover:-translate-y-0.5">
+          <article class="rounded-lg border border-[var(--accent)] bg-white p-6 shadow-sm transition hover:shadow-md hover:-translate-y-0.5">
             <div class="flex items-center justify-between">
               <h3 class="font-semibold">Innovative Learning Specialist — Lake County Schools, FL</h3>
               <span class="text-sm text-slate-600">Jul 2003 – Jun 2007</span>
@@ -91,7 +91,7 @@
         <div>
           <h2 class="text-xl font-bold">Skills</h2>
           <span class="mt-2 block h-1 w-10 bg-[var(--accent)]"></span>
-          <div class="mt-4 rounded-lg border border-slate-200 border-t-4 border-[var(--accent)] bg-white p-6 shadow-sm text-sm text-slate-700 transition hover:shadow-md hover:-translate-y-0.5">
+          <div class="mt-4 rounded-lg border border-[var(--accent)] bg-white p-6 shadow-sm text-sm text-slate-700 transition hover:shadow-md hover:-translate-y-0.5">
             <p><span class="font-semibold">Leadership & Strategy:</span> Product roadmaps, stakeholder alignment, Agile/Scrum, coaching, change management</p>
             <p class="mt-2"><span class="font-semibold">Data & Analytics:</span> SQL, Snowflake, MySQL (Dockerized), ETL (Alteryx, Knime, Talend), DWH optimization</p>
             <p class="mt-2"><span class="font-semibold">Development & Integration:</span> PHP, JavaScript/React, Flask, API integrations, LMS systems, Supabase</p>
@@ -103,7 +103,7 @@
         <div>
           <h2 class="text-xl font-bold">Education</h2>
           <span class="mt-2 block h-1 w-10 bg-[var(--primary)]"></span>
-          <div class="mt-4 rounded-lg border border-slate-200 border-t-4 border-[var(--primary)] bg-white p-6 shadow-sm text-sm text-slate-700 transition hover:shadow-md hover:-translate-y-0.5">
+          <div class="mt-4 rounded-lg border border-[var(--primary)] bg-white p-6 shadow-sm text-sm text-slate-700 transition hover:shadow-md hover:-translate-y-0.5">
             <p>Master, Music Education — Florida State University</p>
             <p class="mt-2">Bachelor, Music Education — University of Central Florida</p>
           </div>
